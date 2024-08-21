@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/SubtitleNudger/bin/Debug/net8.0-windows
+/SubtitleNudger/obj
+/SubtitleNudger/SubtitleNudger.csproj.user
