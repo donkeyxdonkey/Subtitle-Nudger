@@ -1,4 +1,5 @@
-﻿namespace SubtitleNudger;
+﻿
+namespace SubtitleNudger;
 
 public class RecentFiles
 {
@@ -132,6 +133,25 @@ public class RecentFiles
         }
 
         Properties.Settings.Default.Recent0 = _recent[0];
+        Properties.Settings.Default.Save();
+    }
+
+    internal void DeleteBadPath(string path)
+    {
+        for (int i = 0; i < LEN; i++)
+        {
+            if (_recent[i] != path)
+                continue;
+
+            DeleteShiftLeft(i);
+            break;
+        }
+
+        Properties.Settings.Default.Recent0 = _recent[0];
+        Properties.Settings.Default.Recent1 = _recent[1];
+        Properties.Settings.Default.Recent2 = _recent[2];
+        Properties.Settings.Default.Recent3 = _recent[3];
+        Properties.Settings.Default.Recent4 = _recent[4];
         Properties.Settings.Default.Save();
     }
     #endregion

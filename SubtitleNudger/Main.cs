@@ -19,7 +19,20 @@ public partial class Main : Form
     #region ----- METHODS
     private void InitContainer(string path)
     {
-        _container = new(path, DisplayAllLines);
+    CoWabBuNgA:
+        try
+        {
+            _container = new(path, DisplayAllLines);
+        }
+        catch (FileNotFoundException)
+        {
+            _recentFiles.DeleteBadPath(path);
+            path = _recentFiles.Recent0;
+            if (string.IsNullOrEmpty(path))
+                return;
+
+            goto CoWabBuNgA;
+        }
         DisplayAllLines();
         UpdateRecentFiles();
     }
