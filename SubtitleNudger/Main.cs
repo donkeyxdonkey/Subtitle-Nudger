@@ -27,6 +27,7 @@ public partial class Main : Form
         catch (FileNotFoundException)
         {
             _recentFiles.DeleteBadPath(path);
+            UpdateRecentFiles();
             path = _recentFiles.Recent0;
             if (string.IsNullOrEmpty(path))
                 return;
