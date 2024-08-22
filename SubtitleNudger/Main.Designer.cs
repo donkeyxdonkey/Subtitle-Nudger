@@ -44,6 +44,10 @@ partial class Main
         LBL_TimeEnd = new Label();
         LBL_TimeStart = new Label();
         panel2 = new Panel();
+        CB_TimeMetric = new ComboBox();
+        panel3 = new Panel();
+        radioButton2 = new RadioButton();
+        radioButton1 = new RadioButton();
         label4 = new Label();
         TB_ReplaceWith = new TextBox();
         CB_ReplaceAll = new CheckBox();
@@ -63,6 +67,7 @@ partial class Main
         menuStrip1.SuspendLayout();
         panel1.SuspendLayout();
         panel2.SuspendLayout();
+        panel3.SuspendLayout();
         SuspendLayout();
         // 
         // menuStrip1
@@ -228,6 +233,8 @@ partial class Main
         // panel2
         // 
         panel2.BackColor = Color.FromArgb(44, 33, 44);
+        panel2.Controls.Add(CB_TimeMetric);
+        panel2.Controls.Add(panel3);
         panel2.Controls.Add(label4);
         panel2.Controls.Add(TB_ReplaceWith);
         panel2.Controls.Add(CB_ReplaceAll);
@@ -246,11 +253,53 @@ partial class Main
         panel2.Size = new Size(628, 110);
         panel2.TabIndex = 3;
         // 
+        // CB_TimeMetric
+        // 
+        CB_TimeMetric.DropDownStyle = ComboBoxStyle.DropDownList;
+        CB_TimeMetric.FormattingEnabled = true;
+        CB_TimeMetric.Location = new Point(21, 58);
+        CB_TimeMetric.Name = "CB_TimeMetric";
+        CB_TimeMetric.Size = new Size(128, 22);
+        CB_TimeMetric.TabIndex = 16;
+        // 
+        // panel3
+        // 
+        panel3.Controls.Add(radioButton2);
+        panel3.Controls.Add(radioButton1);
+        panel3.Location = new Point(21, 86);
+        panel3.Name = "panel3";
+        panel3.Size = new Size(131, 30);
+        panel3.TabIndex = 15;
+        // 
+        // radioButton2
+        // 
+        radioButton2.AutoSize = true;
+        radioButton2.ForeColor = Color.FromArgb(199, 199, 199);
+        radioButton2.Location = new Point(50, 4);
+        radioButton2.Name = "radioButton2";
+        radioButton2.Size = new Size(74, 18);
+        radioButton2.TabIndex = 2;
+        radioButton2.Text = "CURRENT";
+        radioButton2.UseVisualStyleBackColor = true;
+        // 
+        // radioButton1
+        // 
+        radioButton1.AutoSize = true;
+        radioButton1.Checked = true;
+        radioButton1.ForeColor = Color.FromArgb(199, 199, 199);
+        radioButton1.Location = new Point(3, 4);
+        radioButton1.Name = "radioButton1";
+        radioButton1.Size = new Size(46, 18);
+        radioButton1.TabIndex = 1;
+        radioButton1.TabStop = true;
+        radioButton1.Text = "ALL";
+        radioButton1.UseVisualStyleBackColor = true;
+        // 
         // label4
         // 
         label4.AutoSize = true;
         label4.ForeColor = Color.FromArgb(199, 199, 199);
-        label4.Location = new Point(125, 85);
+        label4.Location = new Point(201, 85);
         label4.Name = "label4";
         label4.Size = new Size(42, 14);
         label4.TabIndex = 14;
@@ -259,9 +308,9 @@ partial class Main
         // TB_ReplaceWith
         // 
         TB_ReplaceWith.Font = new Font("Consolas", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        TB_ReplaceWith.Location = new Point(171, 83);
+        TB_ReplaceWith.Location = new Point(249, 83);
         TB_ReplaceWith.Name = "TB_ReplaceWith";
-        TB_ReplaceWith.Size = new Size(393, 20);
+        TB_ReplaceWith.Size = new Size(315, 20);
         TB_ReplaceWith.TabIndex = 13;
         // 
         // CB_ReplaceAll
@@ -280,18 +329,18 @@ partial class Main
         // 
         label3.AutoSize = true;
         label3.ForeColor = Color.FromArgb(199, 199, 199);
-        label3.Location = new Point(81, 65);
+        label3.Location = new Point(180, 66);
         label3.Name = "label3";
-        label3.Size = new Size(91, 14);
+        label3.Size = new Size(63, 14);
         label3.TabIndex = 11;
-        label3.Text = "Replace All:";
+        label3.Text = "Replace:";
         // 
         // TB_ReplaceAll
         // 
         TB_ReplaceAll.Font = new Font("Consolas", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        TB_ReplaceAll.Location = new Point(171, 62);
+        TB_ReplaceAll.Location = new Point(249, 62);
         TB_ReplaceAll.Name = "TB_ReplaceAll";
-        TB_ReplaceAll.Size = new Size(393, 20);
+        TB_ReplaceAll.Size = new Size(315, 20);
         TB_ReplaceAll.TabIndex = 10;
         TB_ReplaceAll.TextChanged += TB_ReplaceAll_TextChanged;
         // 
@@ -442,6 +491,8 @@ partial class Main
         panel1.PerformLayout();
         panel2.ResumeLayout(false);
         panel2.PerformLayout();
+        panel3.ResumeLayout(false);
+        panel3.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -480,4 +531,8 @@ partial class Main
     private Button BTN_ReplaceAll;
     private Label label4;
     private TextBox TB_ReplaceWith;
+    private ComboBox CB_TimeMetric;
+    private Panel panel3;
+    private RadioButton radioButton2;
+    private RadioButton radioButton1;
 }

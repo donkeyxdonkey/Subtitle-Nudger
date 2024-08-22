@@ -93,6 +93,13 @@ public partial class Main : Form
 
         TB_LoadedFile.Text = _recentFiles.Recent0;
 
+        foreach (TimeMetric metric in Enum.GetValues(typeof(TimeMetric)))
+        {
+            CB_TimeMetric.Items.Add(metric.ToString());
+        }
+
+        CB_TimeMetric.SelectedIndex = 0;
+
         InitContainer(_recentFiles.Recent0);
     }
 
@@ -105,15 +112,19 @@ public partial class Main : Form
     {
         if (Convert.ToInt32(MTB_Time.Text) == 0) return;
 
+        TimeMetric metric = (TimeMetric)CB_TimeMetric.SelectedIndex;
+
+        int value = ConvertToMetric(Convert.ToInt32(MTB_Time.Text), metric);
+
         switch (RB_Add.Checked)
         {
             case true:
-                _container.AddTime(Convert.ToInt32(MTB_Time.Text));
+                _container.AddTime(value);
                 break;
             case false:
                 try
                 {
-                    _container.SubtractTime(Convert.ToInt32(MTB_Time.Text));
+                    _container.SubtractTime(value);
                 }
                 catch (ArgumentException ex)
                 {
@@ -124,6 +135,23 @@ public partial class Main : Form
         }
 
         BTN_Save.Text = "SAVE *";
+    }
+
+    private int ConvertToMetric(int value, TimeMetric metric)
+    {
+        switch (metric)
+        {
+            case TimeMetric.Milliseconds:
+                return value;
+            case TimeMetric.Seconds:
+                return value * 1000;
+            case TimeMetric.Minutes:
+                return value * 1000 * 60;
+            case TimeMetric.Hours:
+                return value * 1000 * 60 * 60;
+        }
+
+        throw new ArgumentException("unreachable");
     }
 
     private void BTN_Load_Click(object sender, EventArgs e)
