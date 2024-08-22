@@ -196,6 +196,12 @@ public partial class Main : Form
     {
         BTN_ReplaceAll.Enabled = TB_ReplaceAll.TextLength > 0;
     }
+
+    private void BTN_ReplaceAll_Click(object sender, EventArgs e)
+    {
+        _container.ReplaceAll(TB_ReplaceAll.Text, TB_ReplaceWith.Text, CB_ReplaceAll.Checked);
+        BTN_Save.Text = "SAVE *";
+    }
     #endregion
 
     #region ----- MENU EVENTS
@@ -211,9 +217,4 @@ public partial class Main : Form
         InitContainer(_recentFiles.Recent0);
     }
     #endregion
-
-    private void BTN_ReplaceAll_Click(object sender, EventArgs e)
-    {
-        _container.ReplaceAll(TB_ReplaceAll.Text, TB_ReplaceWith.Text, CB_ReplaceAll.Checked);
-    }
 }
