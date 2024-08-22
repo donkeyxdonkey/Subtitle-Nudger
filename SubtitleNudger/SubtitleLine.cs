@@ -119,6 +119,9 @@ public class SubtitleLine
                 break;
         }
 
+        if (_text.StartsWith(Environment.NewLine))
+            _text = _text[2..]; // cleanup when everything previous to a linebreak is replaced.
+
         if (!_text.IsNullEmptyOrNewLine())
             return;
 
