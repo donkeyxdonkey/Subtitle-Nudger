@@ -28,6 +28,7 @@ partial class Main
     /// </summary>
     private void InitializeComponent()
     {
+        components = new System.ComponentModel.Container();
         menuStrip1 = new MenuStrip();
         fileToolStripMenuItem = new ToolStripMenuItem();
         TSM_Recent0 = new ToolStripMenuItem();
@@ -36,6 +37,12 @@ partial class Main
         TSM_Recent3 = new ToolStripMenuItem();
         TSM_Recent4 = new ToolStripMenuItem();
         TSM_Exit = new ToolStripMenuItem();
+        storedRegexToolStripMenuItem = new ToolStripMenuItem();
+        TSM_Regex0 = new ToolStripTextBox();
+        TSM_Regex1 = new ToolStripTextBox();
+        TSM_Regex2 = new ToolStripTextBox();
+        TSM_Regex3 = new ToolStripTextBox();
+        TSM_Regex4 = new ToolStripTextBox();
         LB_Content = new ListBox();
         panel1 = new Panel();
         LBL_Index = new Label();
@@ -62,18 +69,24 @@ partial class Main
         RB_Substract = new RadioButton();
         RB_Add = new RadioButton();
         BTN_Delete = new Button();
-        backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
         BTN_Save = new Button();
+        CMS_Regex = new ContextMenuStrip(components);
+        TSM_UseRegex0 = new ToolStripMenuItem();
+        TSM_UseRegex1 = new ToolStripMenuItem();
+        TSM_UseRegex2 = new ToolStripMenuItem();
+        TSM_UseRegex3 = new ToolStripMenuItem();
+        TSM_UseRegex4 = new ToolStripMenuItem();
         menuStrip1.SuspendLayout();
         panel1.SuspendLayout();
         panel2.SuspendLayout();
         panel3.SuspendLayout();
+        CMS_Regex.SuspendLayout();
         SuspendLayout();
         // 
         // menuStrip1
         // 
         menuStrip1.BackColor = Color.FromArgb(44, 33, 44);
-        menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
+        menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, storedRegexToolStripMenuItem });
         menuStrip1.Location = new Point(0, 0);
         menuStrip1.Name = "menuStrip1";
         menuStrip1.Size = new Size(655, 24);
@@ -153,6 +166,44 @@ partial class Main
         TSM_Exit.Size = new Size(158, 22);
         TSM_Exit.Text = "Exit";
         TSM_Exit.Click += TSM_Exit_Click;
+        // 
+        // storedRegexToolStripMenuItem
+        // 
+        storedRegexToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { TSM_Regex0, TSM_Regex1, TSM_Regex2, TSM_Regex3, TSM_Regex4 });
+        storedRegexToolStripMenuItem.ForeColor = Color.FromArgb(199, 199, 199);
+        storedRegexToolStripMenuItem.Name = "storedRegexToolStripMenuItem";
+        storedRegexToolStripMenuItem.Size = new Size(88, 20);
+        storedRegexToolStripMenuItem.Text = "Stored Regex";
+        // 
+        // TSM_Regex0
+        // 
+        TSM_Regex0.Name = "TSM_Regex0";
+        TSM_Regex0.Size = new Size(100, 23);
+        TSM_Regex0.TextChanged += TSM_Regex_TextChanged;
+        // 
+        // TSM_Regex1
+        // 
+        TSM_Regex1.Name = "TSM_Regex1";
+        TSM_Regex1.Size = new Size(100, 23);
+        TSM_Regex1.TextChanged += TSM_Regex_TextChanged;
+        // 
+        // TSM_Regex2
+        // 
+        TSM_Regex2.Name = "TSM_Regex2";
+        TSM_Regex2.Size = new Size(100, 23);
+        TSM_Regex2.TextChanged += TSM_Regex_TextChanged;
+        // 
+        // TSM_Regex3
+        // 
+        TSM_Regex3.Name = "TSM_Regex3";
+        TSM_Regex3.Size = new Size(100, 23);
+        TSM_Regex3.TextChanged += TSM_Regex_TextChanged;
+        // 
+        // TSM_Regex4
+        // 
+        TSM_Regex4.Name = "TSM_Regex4";
+        TSM_Regex4.Size = new Size(100, 23);
+        TSM_Regex4.TextChanged += TSM_Regex_TextChanged;
         // 
         // LB_Content
         // 
@@ -324,6 +375,9 @@ partial class Main
         CB_ReplaceAll.TabIndex = 12;
         CB_ReplaceAll.Text = "Regex";
         CB_ReplaceAll.UseVisualStyleBackColor = true;
+        CB_ReplaceAll.MouseDown += CB_ReplaceAll_MouseDown;
+        CB_ReplaceAll.MouseEnter += CB_ReplaceAll_MouseEnter;
+        CB_ReplaceAll.MouseLeave += CB_ReplaceAll_MouseLeave;
         // 
         // label3
         // 
@@ -466,6 +520,49 @@ partial class Main
         BTN_Save.UseVisualStyleBackColor = true;
         BTN_Save.Click += BTN_Save_Click;
         // 
+        // CMS_Regex
+        // 
+        CMS_Regex.BackColor = Color.FromArgb(155, 155, 155);
+        CMS_Regex.Items.AddRange(new ToolStripItem[] { TSM_UseRegex0, TSM_UseRegex1, TSM_UseRegex2, TSM_UseRegex3, TSM_UseRegex4 });
+        CMS_Regex.Name = "CMS_Regex";
+        CMS_Regex.ShowImageMargin = false;
+        CMS_Regex.Size = new Size(150, 114);
+        // 
+        // TSM_UseRegex0
+        // 
+        TSM_UseRegex0.Name = "TSM_UseRegex0";
+        TSM_UseRegex0.Size = new Size(149, 22);
+        TSM_UseRegex0.Text = "Use Stored Regex 1";
+        TSM_UseRegex0.Click += TSM_UseRegex_Click;
+        // 
+        // TSM_UseRegex1
+        // 
+        TSM_UseRegex1.Name = "TSM_UseRegex1";
+        TSM_UseRegex1.Size = new Size(149, 22);
+        TSM_UseRegex1.Text = "Use Stored Regex 2";
+        TSM_UseRegex1.Click += TSM_UseRegex_Click;
+        // 
+        // TSM_UseRegex2
+        // 
+        TSM_UseRegex2.Name = "TSM_UseRegex2";
+        TSM_UseRegex2.Size = new Size(149, 22);
+        TSM_UseRegex2.Text = "Use Stored Regex 3";
+        TSM_UseRegex2.Click += TSM_UseRegex_Click;
+        // 
+        // TSM_UseRegex3
+        // 
+        TSM_UseRegex3.Name = "TSM_UseRegex3";
+        TSM_UseRegex3.Size = new Size(149, 22);
+        TSM_UseRegex3.Text = "Use Stored Regex 4";
+        TSM_UseRegex3.Click += TSM_UseRegex_Click;
+        // 
+        // TSM_UseRegex4
+        // 
+        TSM_UseRegex4.Name = "TSM_UseRegex4";
+        TSM_UseRegex4.Size = new Size(149, 22);
+        TSM_UseRegex4.Text = "Use Stored Regex 5";
+        TSM_UseRegex4.Click += TSM_UseRegex_Click;
+        // 
         // Main
         // 
         AutoScaleDimensions = new SizeF(7F, 14F);
@@ -494,6 +591,7 @@ partial class Main
         panel2.PerformLayout();
         panel3.ResumeLayout(false);
         panel3.PerformLayout();
+        CMS_Regex.ResumeLayout(false);
         ResumeLayout(false);
         PerformLayout();
     }
@@ -536,4 +634,17 @@ partial class Main
     private Panel panel3;
     private RadioButton radioButton2;
     private RadioButton radioButton1;
+    private ToolStripMenuItem toolStripMenuItem7;
+    private ToolStripMenuItem storedRegexToolStripMenuItem;
+    private ToolStripTextBox TSM_Regex0;
+    private ToolStripTextBox TSM_Regex1;
+    private ToolStripTextBox TSM_Regex2;
+    private ToolStripTextBox TSM_Regex3;
+    private ToolStripTextBox TSM_Regex4;
+    private ContextMenuStrip CMS_Regex;
+    private ToolStripMenuItem TSM_UseRegex0;
+    private ToolStripMenuItem TSM_UseRegex1;
+    private ToolStripMenuItem TSM_UseRegex2;
+    private ToolStripMenuItem TSM_UseRegex3;
+    private ToolStripMenuItem TSM_UseRegex4;
 }

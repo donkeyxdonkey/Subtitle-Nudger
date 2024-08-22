@@ -106,14 +106,14 @@ public class SubtitleLine
 
     internal void Replace(string text, string with, ref List<int>? popIndices, bool enableRegex)
     {
-        if (!_text.Contains(text))
+        if (!enableRegex && !_text.Contains(text))
             return;
 
         switch (enableRegex)
         {
             case true:
-                throw new NotImplementedException();
-            //break;
+                _text = Regex.Replace(_text, text, with);
+                break;
             case false:
                 _text = _text.Replace(text, with);
                 break;

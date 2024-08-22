@@ -94,5 +94,65 @@ namespace SubtitleNudger.Properties {
                 this["Recent4"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\([^)]*\\)")]
+        public string Regex0 {
+            get {
+                return ((string)(this["Regex0"]));
+            }
+            set {
+                this["Regex0"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Regex1 {
+            get {
+                return ((string)(this["Regex1"]));
+            }
+            set {
+                this["Regex1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Regex2 {
+            get {
+                return ((string)(this["Regex2"]));
+            }
+            set {
+                this["Regex2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Regex3 {
+            get {
+                return ((string)(this["Regex3"]));
+            }
+            set {
+                this["Regex3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Regex4 {
+            get {
+                return ((string)(this["Regex4"]));
+            }
+            set {
+                this["Regex4"] = value;
+            }
+        }
     }
 }
