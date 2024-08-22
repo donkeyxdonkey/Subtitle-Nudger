@@ -1,4 +1,7 @@
-﻿namespace SubtitleNudger;
+﻿
+using System.Text.RegularExpressions;
+
+namespace SubtitleNudger;
 
 public class SubtitleLine
 {
@@ -50,7 +53,7 @@ public class SubtitleLine
 
     public void Subtract(int milliseconds)
     {
-        if (_startMS - milliseconds < 0) throw new ArgumentException("Time cannot be negative.");
+        if (_startMS - milliseconds < 0) throw new ArgumentException($"Time cannot be negative. Index: {_index}");
 
         _startMS -= milliseconds;
         _endMS -= milliseconds;
@@ -99,6 +102,27 @@ public class SubtitleLine
     public override string ToString()
     {
         return $"{_index}{Environment.NewLine}{_duration}{Environment.NewLine}{_text}";
+    }
+
+    internal void Replace(string text, string with, ref List<int>? popIndices, bool enableRegex)
+    {
+        if (!_text.Contains(text))
+            return;
+
+        switch (enableRegex)
+        {
+            case true:
+                throw new NotImplementedException();
+            //break;
+            case false:
+                _text = _text.Replace(text, with);
+                break;
+        }
+
+        if (!_text.IsNullEmptyOrNewLine())
+            return;
+
+        popIndices!.Add(_index - 1);
     }
     #endregion
 }

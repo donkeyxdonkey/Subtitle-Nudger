@@ -44,6 +44,12 @@ partial class Main
         LBL_TimeEnd = new Label();
         LBL_TimeStart = new Label();
         panel2 = new Panel();
+        label4 = new Label();
+        TB_ReplaceWith = new TextBox();
+        CB_ReplaceAll = new CheckBox();
+        label3 = new Label();
+        TB_ReplaceAll = new TextBox();
+        BTN_ReplaceAll = new Button();
         BTN_Execute = new Button();
         BTN_Load = new Button();
         TB_LoadedFile = new TextBox();
@@ -85,7 +91,7 @@ partial class Main
         TSM_Recent0.ForeColor = Color.FromArgb(199, 199, 199);
         TSM_Recent0.Name = "TSM_Recent0";
         TSM_Recent0.ShortcutKeys = Keys.Control | Keys.D1;
-        TSM_Recent0.Size = new Size(180, 22);
+        TSM_Recent0.Size = new Size(158, 22);
         TSM_Recent0.Text = ".....";
         TSM_Recent0.Click += TSM_Recent_Click;
         // 
@@ -96,7 +102,7 @@ partial class Main
         TSM_Recent1.ForeColor = Color.FromArgb(199, 199, 199);
         TSM_Recent1.Name = "TSM_Recent1";
         TSM_Recent1.ShortcutKeys = Keys.Control | Keys.D2;
-        TSM_Recent1.Size = new Size(180, 22);
+        TSM_Recent1.Size = new Size(158, 22);
         TSM_Recent1.Text = ".....";
         TSM_Recent1.Click += TSM_Recent_Click;
         // 
@@ -107,7 +113,7 @@ partial class Main
         TSM_Recent2.ForeColor = Color.FromArgb(199, 199, 199);
         TSM_Recent2.Name = "TSM_Recent2";
         TSM_Recent2.ShortcutKeys = Keys.Control | Keys.D3;
-        TSM_Recent2.Size = new Size(180, 22);
+        TSM_Recent2.Size = new Size(158, 22);
         TSM_Recent2.Text = ".....";
         TSM_Recent2.Click += TSM_Recent_Click;
         // 
@@ -118,7 +124,7 @@ partial class Main
         TSM_Recent3.ForeColor = Color.FromArgb(199, 199, 199);
         TSM_Recent3.Name = "TSM_Recent3";
         TSM_Recent3.ShortcutKeys = Keys.Control | Keys.D4;
-        TSM_Recent3.Size = new Size(180, 22);
+        TSM_Recent3.Size = new Size(158, 22);
         TSM_Recent3.Text = ".....";
         TSM_Recent3.Click += TSM_Recent_Click;
         // 
@@ -129,7 +135,7 @@ partial class Main
         TSM_Recent4.ForeColor = Color.FromArgb(199, 199, 199);
         TSM_Recent4.Name = "TSM_Recent4";
         TSM_Recent4.ShortcutKeys = Keys.Control | Keys.D5;
-        TSM_Recent4.Size = new Size(180, 22);
+        TSM_Recent4.Size = new Size(158, 22);
         TSM_Recent4.Text = ".....";
         TSM_Recent4.Click += TSM_Recent_Click;
         // 
@@ -139,7 +145,7 @@ partial class Main
         TSM_Exit.ForeColor = Color.FromArgb(199, 199, 199);
         TSM_Exit.Name = "TSM_Exit";
         TSM_Exit.ShortcutKeys = Keys.Control | Keys.E;
-        TSM_Exit.Size = new Size(180, 22);
+        TSM_Exit.Size = new Size(158, 22);
         TSM_Exit.Text = "Exit";
         TSM_Exit.Click += TSM_Exit_Click;
         // 
@@ -222,6 +228,12 @@ partial class Main
         // panel2
         // 
         panel2.BackColor = Color.FromArgb(44, 33, 44);
+        panel2.Controls.Add(label4);
+        panel2.Controls.Add(TB_ReplaceWith);
+        panel2.Controls.Add(CB_ReplaceAll);
+        panel2.Controls.Add(label3);
+        panel2.Controls.Add(TB_ReplaceAll);
+        panel2.Controls.Add(BTN_ReplaceAll);
         panel2.Controls.Add(BTN_Execute);
         panel2.Controls.Add(BTN_Load);
         panel2.Controls.Add(TB_LoadedFile);
@@ -231,8 +243,71 @@ partial class Main
         panel2.Controls.Add(RB_Add);
         panel2.Location = new Point(12, 265);
         panel2.Name = "panel2";
-        panel2.Size = new Size(628, 67);
+        panel2.Size = new Size(628, 110);
         panel2.TabIndex = 3;
+        // 
+        // label4
+        // 
+        label4.AutoSize = true;
+        label4.ForeColor = Color.FromArgb(199, 199, 199);
+        label4.Location = new Point(125, 85);
+        label4.Name = "label4";
+        label4.Size = new Size(42, 14);
+        label4.TabIndex = 14;
+        label4.Text = "With:";
+        // 
+        // TB_ReplaceWith
+        // 
+        TB_ReplaceWith.Font = new Font("Consolas", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        TB_ReplaceWith.Location = new Point(171, 83);
+        TB_ReplaceWith.Name = "TB_ReplaceWith";
+        TB_ReplaceWith.Size = new Size(393, 20);
+        TB_ReplaceWith.TabIndex = 13;
+        // 
+        // CB_ReplaceAll
+        // 
+        CB_ReplaceAll.AutoSize = true;
+        CB_ReplaceAll.Font = new Font("Consolas", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        CB_ReplaceAll.ForeColor = Color.DarkGray;
+        CB_ReplaceAll.Location = new Point(569, 85);
+        CB_ReplaceAll.Name = "CB_ReplaceAll";
+        CB_ReplaceAll.Size = new Size(56, 17);
+        CB_ReplaceAll.TabIndex = 12;
+        CB_ReplaceAll.Text = "Regex";
+        CB_ReplaceAll.UseVisualStyleBackColor = true;
+        // 
+        // label3
+        // 
+        label3.AutoSize = true;
+        label3.ForeColor = Color.FromArgb(199, 199, 199);
+        label3.Location = new Point(81, 65);
+        label3.Name = "label3";
+        label3.Size = new Size(91, 14);
+        label3.TabIndex = 11;
+        label3.Text = "Replace All:";
+        // 
+        // TB_ReplaceAll
+        // 
+        TB_ReplaceAll.Font = new Font("Consolas", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        TB_ReplaceAll.Location = new Point(171, 62);
+        TB_ReplaceAll.Name = "TB_ReplaceAll";
+        TB_ReplaceAll.Size = new Size(393, 20);
+        TB_ReplaceAll.TabIndex = 10;
+        TB_ReplaceAll.TextChanged += TB_ReplaceAll_TextChanged;
+        // 
+        // BTN_ReplaceAll
+        // 
+        BTN_ReplaceAll.Enabled = false;
+        BTN_ReplaceAll.FlatStyle = FlatStyle.Flat;
+        BTN_ReplaceAll.Font = new Font("Consolas", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        BTN_ReplaceAll.ForeColor = Color.FromArgb(199, 199, 199);
+        BTN_ReplaceAll.Location = new Point(565, 62);
+        BTN_ReplaceAll.Name = "BTN_ReplaceAll";
+        BTN_ReplaceAll.Size = new Size(44, 20);
+        BTN_ReplaceAll.TabIndex = 9;
+        BTN_ReplaceAll.Text = "EXEC";
+        BTN_ReplaceAll.UseVisualStyleBackColor = true;
+        BTN_ReplaceAll.Click += BTN_ReplaceAll_Click;
         // 
         // BTN_Execute
         // 
@@ -263,6 +338,7 @@ partial class Main
         // 
         // TB_LoadedFile
         // 
+        TB_LoadedFile.BackColor = Color.Bisque;
         TB_LoadedFile.Font = new Font("Consolas", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         TB_LoadedFile.Location = new Point(171, 32);
         TB_LoadedFile.Name = "TB_LoadedFile";
@@ -346,7 +422,7 @@ partial class Main
         AutoScaleDimensions = new SizeF(7F, 14F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Black;
-        ClientSize = new Size(655, 343);
+        ClientSize = new Size(655, 387);
         Controls.Add(BTN_Save);
         Controls.Add(BTN_Delete);
         Controls.Add(panel2);
@@ -398,4 +474,10 @@ partial class Main
     private Button BTN_Delete;
     private System.ComponentModel.BackgroundWorker backgroundWorker1;
     private Button BTN_Save;
+    private CheckBox CB_ReplaceAll;
+    private Label label3;
+    private TextBox TB_ReplaceAll;
+    private Button BTN_ReplaceAll;
+    private Label label4;
+    private TextBox TB_ReplaceWith;
 }

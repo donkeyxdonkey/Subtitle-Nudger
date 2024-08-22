@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace SubtitleNudger;
 
@@ -17,6 +19,8 @@ public partial class SubtitleContainer
     private List<SubtitleLine>? _data;
 
     private readonly Action _update;
+
+    private List<int>? _popIndices;
     #endregion
 
     #region ----- CONSTRUCTOR
@@ -109,6 +113,29 @@ public partial class SubtitleContainer
         {
             _data[i].Index--;
         }
+
+        _update();
+    }
+
+    public void ReplaceAll(string text, string with, bool enableRegex)
+    {
+        _popIndices = [];
+
+        for (int i = 0; i < _data!.Count; i++)
+        {
+            _data[i].Replace(text, with, ref _popIndices, enableRegex);
+        }
+
+        for (int i = _popIndices!.Count - 1; i >= 0; i--)
+        {
+            _data.RemoveAt(_popIndices[i]);
+            for (int j = _popIndices[i]; j < _data.Count; j++)
+            {
+                _data[j].Index--;
+            }
+        }
+
+        _popIndices = null;
 
         _update();
     }

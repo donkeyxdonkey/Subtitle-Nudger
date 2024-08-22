@@ -191,6 +191,11 @@ public partial class Main : Form
 
         LB_Content.SelectedIndex = index;
     }
+
+    private void TB_ReplaceAll_TextChanged(object sender, EventArgs e)
+    {
+        BTN_ReplaceAll.Enabled = TB_ReplaceAll.TextLength > 0;
+    }
     #endregion
 
     #region ----- MENU EVENTS
@@ -206,4 +211,9 @@ public partial class Main : Form
         InitContainer(_recentFiles.Recent0);
     }
     #endregion
+
+    private void BTN_ReplaceAll_Click(object sender, EventArgs e)
+    {
+        _container.ReplaceAll(TB_ReplaceAll.Text, TB_ReplaceWith.Text, CB_ReplaceAll.Checked);
+    }
 }
