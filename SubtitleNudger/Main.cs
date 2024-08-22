@@ -342,6 +342,8 @@ public partial class Main : Form
 
     private void TSM_Regex_TextChanged(object sender, EventArgs e)
     {
+        if (!_formLoaded) return;
+
         int index = (sender as ToolStripMenuItem)!.Name![^1] - '0';
 
         switch (index)
