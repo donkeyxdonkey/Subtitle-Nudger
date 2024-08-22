@@ -2,6 +2,8 @@ namespace SubtitleNudger;
 
 public partial class Main : Form
 {
+    const string SAVE_ACTIVE = "SAVE *";
+
     #region ----- FIELDS
     private SubtitleContainer _container;
     private readonly RecentFiles _recentFiles;
@@ -151,7 +153,7 @@ public partial class Main : Form
                 break;
         }
 
-        BTN_Save.Text = "SAVE *";
+        BTN_Save.Text = SAVE_ACTIVE;
     }
 
     private void BTN_Load_Click(object sender, EventArgs e)
@@ -218,6 +220,8 @@ public partial class Main : Form
             index--;
 
         LB_Content.SelectedIndex = index;
+
+        BTN_Save.Text = SAVE_ACTIVE;
     }
 
     private void TB_ReplaceAll_TextChanged(object sender, EventArgs e)
@@ -228,22 +232,22 @@ public partial class Main : Form
     private void BTN_ReplaceAll_Click(object sender, EventArgs e)
     {
         _container.ReplaceAll(TB_ReplaceAll.Text, TB_ReplaceWith.Text, CB_ReplaceAll.Checked);
-        BTN_Save.Text = "SAVE *";
+        BTN_Save.Text = SAVE_ACTIVE;
     }
 
     private void Main_FormClosing(object sender, FormClosingEventArgs e)
     {
-        if (BTN_Save.Text == "SAVE *")
-        {
-            // TODO: CustomDialogue Save & Exit - Discard - Cancel
-            DialogResult result = MessageBox.Show("Changes to file has been made, confirm application close.",
-                                                  "Confirm Exit",
-                                                  MessageBoxButtons.YesNo,
-                                                  MessageBoxIcon.Question);
+        if (BTN_Save.Text != SAVE_ACTIVE)
+            return;
 
-            if (result == DialogResult.No)
-                e.Cancel = true;
-        }
+        // TODO: CustomDialogue Save & Exit - Discard - Cancel
+        DialogResult result = MessageBox.Show("Changes to file has been made, confirm application close.",
+                                              "Confirm Exit",
+                                              MessageBoxButtons.YesNo,
+                                              MessageBoxIcon.Question);
+
+        if (result == DialogResult.No)
+            e.Cancel = true;
     }
     #endregion
 
