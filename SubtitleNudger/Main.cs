@@ -264,7 +264,6 @@ public partial class Main : Form
 
     private void BTN_ReplaceAll_Click(object sender, EventArgs e)
     {
-        bool korv = CB_ReplaceAll.Checked;
         _container.ReplaceAll(TB_ReplaceAll.Text, TB_ReplaceWith.Text, CB_ReplaceAll.Checked);
         BTN_Save.Text = SAVE_ACTIVE;
     }
