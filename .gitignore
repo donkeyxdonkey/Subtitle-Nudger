@@ -6,3 +6,5 @@
 /SubtitleNudger/bin/Debug/net8.0-windows
 /SubtitleNudger/obj
 /SubtitleNudger/SubtitleNudger.csproj.user
+/SubtitleNudger/bin/Release/net8.0-windows
+/SubtitleNudger/Properties/PublishProfiles
