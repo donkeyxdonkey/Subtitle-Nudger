@@ -124,6 +124,13 @@ public class SubtitleLine
             _text = _text[2..]; // cleanup when everything previous to a linebreak is replaced.
         }
 
+        const string TWO_LINES = "\r\n\r\n";
+
+        while (_text.Contains(TWO_LINES))
+        {
+            _text = _text.Replace(TWO_LINES, Environment.NewLine); // cleanup any double newlines
+        }
+
         if (!_text.IsNullEmptyOrNewLine())
             return;
 
