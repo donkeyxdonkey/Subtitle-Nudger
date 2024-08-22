@@ -484,6 +484,7 @@ partial class Main
         MaximizeBox = false;
         Name = "Main";
         Text = "Subtitle Nudger";
+        FormClosing += Main_FormClosing;
         Load += Main_Load;
         menuStrip1.ResumeLayout(false);
         menuStrip1.PerformLayout();

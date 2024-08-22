@@ -84,6 +84,23 @@ public partial class Main : Form
         TSM_Recent4.Text = _recentFiles.Recent4;
         TSM_Recent4.Enabled = true;
     }
+
+    private static int ConvertToMetric(int value, TimeMetric metric)
+    {
+        switch (metric)
+        {
+            case TimeMetric.Milliseconds:
+                return value;
+            case TimeMetric.Seconds:
+                return value * 1000;
+            case TimeMetric.Minutes:
+                return value * 1000 * 60;
+            case TimeMetric.Hours:
+                return value * 1000 * 60 * 60;
+        }
+
+        throw new ArgumentException("unreachable");
+    }
     #endregion
 
     #region ----- EVENTS
@@ -135,23 +152,6 @@ public partial class Main : Form
         }
 
         BTN_Save.Text = "SAVE *";
-    }
-
-    private int ConvertToMetric(int value, TimeMetric metric)
-    {
-        switch (metric)
-        {
-            case TimeMetric.Milliseconds:
-                return value;
-            case TimeMetric.Seconds:
-                return value * 1000;
-            case TimeMetric.Minutes:
-                return value * 1000 * 60;
-            case TimeMetric.Hours:
-                return value * 1000 * 60 * 60;
-        }
-
-        throw new ArgumentException("unreachable");
     }
 
     private void BTN_Load_Click(object sender, EventArgs e)
@@ -229,6 +229,21 @@ public partial class Main : Form
     {
         _container.ReplaceAll(TB_ReplaceAll.Text, TB_ReplaceWith.Text, CB_ReplaceAll.Checked);
         BTN_Save.Text = "SAVE *";
+    }
+
+    private void Main_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        if (BTN_Save.Text == "SAVE *")
+        {
+            // TODO: CustomDialogue Save & Exit - Discard - Cancel
+            DialogResult result = MessageBox.Show("Changes to file has been made, confirm application close.",
+                                                  "Confirm Exit",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+                e.Cancel = true;
+        }
     }
     #endregion
 
