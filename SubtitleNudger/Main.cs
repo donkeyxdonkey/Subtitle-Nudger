@@ -343,7 +343,7 @@ public partial class Main : Form
     {
         if (!_formLoaded) return;
 
-        int index = (sender as ToolStripMenuItem)!.Name![^1] - '0';
+        int index = (sender as ToolStripTextBox)!.Name![^1] - '0';
 
         switch (index)
         {
